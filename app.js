@@ -59,6 +59,7 @@ function loadFileOutput(content) {
             navigator.clipboard.writeText(data.template.imageData);
         };
         document.getElementById("outputImage").src = data.template.imageData;
+        document.getElementById("outputImage").style.display = "flex";
         setOutput("_needsImageLoad", data.template._needsImageLoad);
         setOutput("_version", data.template._version);
         document.getElementById("output").style.display = "";
