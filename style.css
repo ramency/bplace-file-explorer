@@ -2,11 +2,6 @@
     font-family: sans-serif;
 }
 
-img {
-    padding: 0.75rem;
-    border: white solid;
-}
-
 body {
     background: #414040;
     color: white;
@@ -17,6 +12,12 @@ main {
     flex-direction: column;
     align-items: center;
     font-size: clamp(1rem, 1.3rem, 6rem);
+}
+
+img {
+    padding: 0.75rem;
+    border: white solid;
+    border-radius: 1rem;
 }
 
 #center-container {
@@ -45,7 +46,7 @@ main {
 }
 
 #dropTarget.dragover {
-    background-color: #f0f0f0;
+    background-color: #555;
     border-color: #333;
 }
 
