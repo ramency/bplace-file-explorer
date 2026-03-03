@@ -41,15 +41,16 @@ function loadFileOutput(content) {
 
     try {
         let data = JSON.parse(content);
+        const timestamp = data.exportedAt;
         setOutput("version", data.version);
-        setOutput("exportedAt", data.exportedAt);
+        setOutput("exportedAt", timestamp);
         setOutput("name", data.template.name);
-        setOutput("opacity", data.template.opacity);
-        setOutput("position", `X: ${data.template.position.x} Y: ${data.template.position.y}`);
-        setOutput("scale", data.template.scale);
-        setOutput("rotation", data.template.rotation);
+        setOutput("opacity", `${Math.round(data.template.opacity * 100)} %`);
+        setOutput("position", `X: ${data.template.position.x} \nY: ${data.template.position.y}`);
+        setOutput("scale", `${Math.round(data.template.scale * 100)} %`);
+        setOutput("rotation", `${data.template.rotation} °`);
         setOutput("visible", data.template.visible);
-        setOutput("size", `Width: ${data.template.width} Height: ${data.template.height}`);
+        setOutput("size", `Width: ${Math.round(data.template.width)} px \nHeight: ${Math.round(data.template.height)} px`);
         setOutput("displayMode", data.template.displayMode);
         setOutput("renderAbovePixels", data.template.renderAbovePixels);
         setOutput("excludeSpecialColors", data.template.excludeSpecialColors);
@@ -63,7 +64,16 @@ function loadFileOutput(content) {
         setOutput("_needsImageLoad", data.template._needsImageLoad);
         setOutput("_version", data.template._version);
         document.getElementById("output").style.display = "";
+        hideInput();
     } catch (err) {
         alert(`Error reading file: ${err}`);
+    }
+}
+
+function hideInput() {
+    let dropContainer = document.getElementById("drop-container");
+    let output = document.getElementById("output");
+    if (output.style.display !== "none") {
+        dropContainer.style.display = "none";
     }
 }
