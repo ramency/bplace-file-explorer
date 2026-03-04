@@ -1,6 +1,9 @@
+/* TODO: unify button elements, cleanup etc. */
+
 :root {
     --text-color: white;
     --background-color: #414040;
+    --hover-background-color: #555;
     --outer-border-color: white;
     --inner-border-color: gray;
 }
@@ -50,22 +53,22 @@ th, td {
     padding: 0.75rem;
 }
 
-.top-row > :is(th, td)  {
+.topRow > :is(th, td) {
     border-top: none !important; /* Remove outer border */
 }
 
-.bottom-row > :is(th, td) {
+.bottomRow > :is(th, td) {
     border-bottom: none !important; /* Remove outer border */
 }
 
-#center-container {
+#centerContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: clamp(30rem, 40vw, 70vw);
 }
 
-#drop-container {
+#dropContainer {
     display: flex;
     width: clamp(15rem, 70%, 70%);
     flex-direction: column;
@@ -84,8 +87,8 @@ th, td {
 }
 
 #dropTarget.dragover {
-    background-color: #555;
-    border-color: #333;
+    background-color: var(--hover-background-color);
+    border-style: solid;
 }
 
 #inputChooser {
@@ -103,18 +106,46 @@ th, td {
 }
 
 #inputChooserLabel:hover {
-    background-color: #555;
+    background-color: var(--hover-background-color);
     cursor: pointer;
 }
 
-#img-container {
+#imgContainer {
+    display: none;
     margin: 1rem auto;
 }
 
 #outputImage {
-    display: none;
+    display: flex;
     flex-direction: column;
     margin: 0 auto;
     width: clamp(6rem, 100%, 80%);
     image-rendering: pixelated;
+}
+
+#resetButtonLabel {
+    margin: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--inner-border-color);
+    box-shadow: 0.1rem 0.1rem 0.1rem #555;
+}
+
+#resetButtonLabel:hover {
+    background-color: var(--hover-background-color);
+    cursor: pointer;
+}
+
+#saveButton {
+    margin: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--inner-border-color);
+    box-shadow: 0.1rem 0.1rem 0.1rem #555;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#saveButton:hover {
+    background-color: var(--hover-background-color);
 }

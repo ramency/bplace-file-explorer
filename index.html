@@ -1,135 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="bplace file explorer">
-    <title>bplace file explorer</title>
-    <link href="style.css" rel="stylesheet">
-    <script src="app.js" type="module"></script>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="bplace file explorer">
+   <title>bplace file explorer</title>
+   <link href="style.css" rel="stylesheet">
+   <script src="app.js" type="module"></script>
 </head>
 <body>
 <main>
-    <div id="center-container">
-        <div id="drop-container">
-            <p id="dropTarget">
-                Drop file here
-            </p>
-            <label id="inputChooserLabel" for="inputChooser">Choose File</label>
-            <input id="inputChooser" type="file" accept=".bplace">
-        </div>
-        <div id="img-container">
-            <img id="outputImage" src="" alt="Output Image">
-        </div>
-        <div id="output" style="display:none;">
-            <table>
-                <tr class="top-row">
-                    <th scope="row">Version</th>
-                    <td>
-                        <span class="output" id="output-version"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Exported At</th>
-                    <td>
-                        <span class="output" id="output-exportedAt"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Name</th>
-                    <td>
-                        <span class="output" id="output-name"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Opacity</th>
-                    <td>
-                        <span class="output" id="output-opacity"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Position</th>
-                    <td>
-                        <span class="output" id="output-position"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Scale</th>
-                    <td>
-                        <span class="output" id="output-scale"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Rotation</th>
-                    <td>
-                        <span class="output" id="output-rotation"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Visible</th>
-                    <td>
-                        <span class="output" id="output-visible"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Size</th>
-                    <td>
-                        <span class="output" id="output-size"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Display Mode</th>
-                    <td>
-                        <span class="output" id="output-displayMode"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Render Above Pixels</th>
-                    <td><span class="output" id="output-renderAbovePixels"></span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Exclude Special Colors</th>
-                    <td>
-                        <span class="output" id="output-excludeSpecialColors"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Canvas Type</th>
-                    <td>
-                        <span class="output" id="output-canvasType"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Image in IndexedDB</th>
-                    <td>
-                        <span class="output" id="output-imageInIndexedDB"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Image Data</th>
-                    <td>
-                        <button id="imageDataCopyButton">Copy Image Data</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Needs Image Load</th>
-                    <td>
-                        <span class="output" id="output-_needsImageLoad"></span>
-                    </td>
-                </tr>
-                <tr class="bottom-row">
-                    <th scope="row">Version</th>
-                    <td>
-                        <span class="output" id="output-_version"></span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="bottom-container">
+   <div id="centerContainer">
 
-        </div>
-    </div>
+      <!-- Gets hidden as soon as .bplace file is picked -->
+      <div id="dropContainer">
+         <p id="dropTarget">
+            Drop file here
+         </p>
+         <label id="inputChooserLabel" for="inputChooser">Choose File</label>
+         <input id="inputChooser" type="file" accept=".bplace"/>
+      </div>
+
+      <!-- Gets displayed as soon as .bplace file is picked -->
+      <div id="imgContainer" style="display: none;">
+         <img id="outputImage" src="" alt="Output Image">
+      </div>
+
+      <!-- Gets displayed as soon as .bplace file is picked -->
+      <div id="outputContainer" style="display:none;">
+         <table>
+            <tr class="topRow">
+               <th scope="row">Version</th>
+               <td>
+                  <span class="output" id="output-version"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Exported At</th>
+               <td>
+                  <span class="output" id="output-exportedAt"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Name</th>
+               <td>
+                  <span class="output" id="output-name"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Opacity</th>
+               <td>
+                  <span class="output" id="output-opacity"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Position</th>
+               <td>
+                  <span class="output" id="output-position"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Scale</th>
+               <td>
+                  <span class="output" id="output-scale"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Rotation</th>
+               <td>
+                  <span class="output" id="output-rotation"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Visible</th>
+               <td>
+                  <span class="output" id="output-visible"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Size</th>
+               <td>
+                  <span class="output" id="output-size"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Display Mode</th>
+               <td>
+                  <span class="output" id="output-displayMode"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Render Above Pixels</th>
+               <td><span class="output" id="output-renderAbovePixels"></span></td>
+            </tr>
+            <tr>
+               <th scope="row">Exclude Special Colors</th>
+               <td>
+                  <span class="output" id="output-excludeSpecialColors"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Canvas Type</th>
+               <td>
+                  <span class="output" id="output-canvasType"></span>
+               </td>
+            </tr>
+            <tr>
+               <th scope="row">Image in IndexedDB</th>
+               <td>
+                  <span class="output" id="output-imageInIndexedDB"></span>
+               </td>
+            </tr>
+            <!--tr> Replaced by "Save PNG" Button
+               <th scope="row">Image Data</th>
+               <td>
+                  <button id="imageDataCopyButton">Copy Image Data</button>
+               </td>
+            </tr-->
+            <tr>
+               <th scope="row">Needs Image Load</th>
+               <td>
+                  <span class="output" id="output-_needsImageLoad"></span>
+               </td>
+            </tr>
+            <tr class="bottomRow">
+               <th scope="row">Version</th>
+               <td>
+                  <span class="output" id="output-_version"></span>
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- Gets displayed as soon as .bplace file is picked -->
+      <div id="bottomContainer" style="display:none;">
+         <label id="resetButtonLabel" for="resetButton">Reset</label>
+         <input id="resetButton" type="button" style="display:none;"/>
+
+         <a id="saveButton" href="" style="display:none;">Save PNG</a>
+      </div>
+
+   </div>
 </main>
 </body>
 </html>
