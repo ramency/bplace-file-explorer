@@ -1,4 +1,4 @@
-/* TODO: unify button elements, cleanup etc. */
+/* TODO: Cleanup etc. */
 
 :root {
     --text-color: white;
@@ -6,28 +6,24 @@
     --hover-background-color: #555;
     --outer-border-color: white;
     --inner-border-color: gray;
+    --shadow-color: #555;
 }
 
 * {
     font-family: sans-serif;
+    font-size: clamp(1rem, 1.3rem, 6rem);
 }
 
 body {
     background: var(--background-color);
     color: var(--text-color);
+
 }
 
-main {
+main, .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: clamp(1rem, 1.3rem, 6rem);
-}
-
-img {
-    padding: 0.75rem;
-    border: 0.2rem solid var(--outer-border-color);
-    border-radius: 1rem;
 }
 
 table {
@@ -38,19 +34,52 @@ table {
 
 /* Cells on the left */
 th {
-    text-align: left;
     border-left: none !important; /* Remove outer border */
 }
 
 /* Cells on the right */
 td {
-    text-align: left;
     border-right: none !important; /* Remove outer border */
 }
 
 th, td {
+    text-align: left;
     border: 0.1rem solid var(--inner-border-color);
     padding: 0.75rem;
+}
+
+input[type="button"],[type="file"] {
+    display: none;
+    border: none;
+    outline: none;
+    width: 0;
+    height: 0;
+}
+
+a[class="button"] {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.container[data-variant="prefilepick"] {
+    display: flex;
+}
+
+.container[data-variant="postfilepick"] {
+    display: none;
+}
+
+.button {
+    margin: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--inner-border-color);
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--shadow-color);
+}
+
+.button:hover {
+    background-color: var(--hover-background-color);
+    cursor: pointer;
 }
 
 .topRow > :is(th, td) {
@@ -62,17 +91,11 @@ th, td {
 }
 
 #centerContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: clamp(30rem, 40vw, 70vw);
 }
 
 #dropContainer {
-    display: flex;
     width: clamp(15rem, 70%, 70%);
-    flex-direction: column;
-    align-items: center;
 }
 
 #dropTarget {
@@ -91,61 +114,17 @@ th, td {
     border-style: solid;
 }
 
-#inputChooser {
-    border: none;
-    outline: none;
-    width: 0;
-    height: 0;
-}
-
-#inputChooserLabel {
-    padding: 0.5rem 1rem;
-    border-radius: 0.8rem;
-    border: 0.15rem solid var(--inner-border-color);
-    box-shadow: 0.1rem 0.1rem 0.1rem #555;
-}
-
-#inputChooserLabel:hover {
-    background-color: var(--hover-background-color);
-    cursor: pointer;
-}
-
 #imgContainer {
-    display: none;
-    margin: 1rem auto;
+    margin: 1rem auto
 }
 
 #outputImage {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+    border: 0.2rem solid var(--outer-border-color);
+    border-radius: 1rem;
     width: clamp(6rem, 100%, 80%);
     image-rendering: pixelated;
 }
 
-#resetButtonLabel {
-    margin: 0.75rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.8rem;
-    border: 0.15rem solid var(--inner-border-color);
-    box-shadow: 0.1rem 0.1rem 0.1rem #555;
-}
-
-#resetButtonLabel:hover {
-    background-color: var(--hover-background-color);
-    cursor: pointer;
-}
-
-#saveButton {
-    margin: 0.75rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.8rem;
-    border: 0.15rem solid var(--inner-border-color);
-    box-shadow: 0.1rem 0.1rem 0.1rem #555;
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-#saveButton:hover {
-    background-color: var(--hover-background-color);
+#bottomContainer {
+    flex-direction: row;
 }

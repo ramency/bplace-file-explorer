@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,26 +10,27 @@
    <link href="style.css" rel="stylesheet">
    <script src="app.js" type="module"></script>
 </head>
+
 <body>
 <main>
-   <div id="centerContainer">
+   <div class="container" id="centerContainer">
 
       <!-- Gets hidden as soon as .bplace file is picked -->
-      <div id="dropContainer">
+      <div class="container" id="dropContainer" data-variant="prefilepick">
          <p id="dropTarget">
             Drop file here
          </p>
-         <label id="inputChooserLabel" for="inputChooser">Choose File</label>
+         <label class="button" id="inputChooserLabel" for="inputChooser">Choose File</label>
          <input id="inputChooser" type="file" accept=".bplace"/>
       </div>
 
       <!-- Gets displayed as soon as .bplace file is picked -->
-      <div id="imgContainer" style="display: none;">
+      <div class="container" id="imgContainer" data-variant="postfilepick">
          <img id="outputImage" src="" alt="Output Image">
       </div>
 
       <!-- Gets displayed as soon as .bplace file is picked -->
-      <div id="outputContainer" style="display:none;">
+      <div class="container" id="outputContainer" data-variant="postfilepick">
          <table>
             <tr class="topRow">
                <th scope="row">Version</th>
@@ -112,12 +114,6 @@
                   <span class="output" id="output-imageInIndexedDB"></span>
                </td>
             </tr>
-            <!--tr> Replaced by "Save PNG" Button
-               <th scope="row">Image Data</th>
-               <td>
-                  <button id="imageDataCopyButton">Copy Image Data</button>
-               </td>
-            </tr-->
             <tr>
                <th scope="row">Needs Image Load</th>
                <td>
@@ -134,11 +130,11 @@
       </div>
 
       <!-- Gets displayed as soon as .bplace file is picked -->
-      <div id="bottomContainer" style="display:none;">
-         <label id="resetButtonLabel" for="resetButton">Reset</label>
-         <input id="resetButton" type="button" style="display:none;"/>
+      <div class="container" id="bottomContainer" data-variant="postfilepick">
+         <label class="button" id="resetButtonLabel" for="resetButton">Reset</label>
+         <input id="resetButton" type="button"/>
 
-         <a id="saveButton" href="" style="display:none;">Save PNG</a>
+         <a class="button" id="saveButton" href="">Save PNG</a>
       </div>
 
    </div>

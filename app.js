@@ -1,3 +1,5 @@
+import { templateFile } from "./templateFile.js";
+
 const dropZone = document.getElementById("dropTarget");
 
 dropZone.addEventListener("dragover", (event) => {
@@ -40,17 +42,15 @@ document.getElementById("resetButton").addEventListener("click", async (event) =
    resetOutput();
 });
 
-document.getElementById("saveButton").addEventListener("click", async (event) => {
-
-})
-
 function loadFileOutput(content) {
    function setOutput(key, value) {
       document.getElementById(`output-${key}`).innerText = value;
    }
 
    try {
-      let data = JSON.parse(content);
+
+      let data = Object.assign({}, JSON.parse(content));
+      console.log(data);
       let imageData = data.template.imageData;
       let timestamp = new Date(Date.parse(data.exportedAt)).toUTCString();
 
@@ -68,12 +68,6 @@ function loadFileOutput(content) {
       setOutput("excludeSpecialColors", data.template.excludeSpecialColors);
       setOutput("canvasType", data.template.canvasType);
       setOutput("imageInIndexedDB", data.template.imageInIndexedDB);
-
-      /* Replaced by "Save PNG" Button
-      document.getElementById("imageDataCopyButton").onclick = () => {
-          navigator.clipboard.writeText(data.template.imageData);
-      };
-       */
 
       document.getElementById("outputImage").src = data.template.imageData;
       setOutput("_needsImageLoad", data.template._needsImageLoad);
